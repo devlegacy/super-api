@@ -20,7 +20,7 @@
     "express-validation": "^1.0.2",
     "handlebars": "^4.0.12",
     "joi": "^14.0.6",
-    "jsonwebtoken": "^8.3.0",
+    "jsonwebtoken": "^8.4.0",
     "nodemailer": "^4.6.8",
     "sequelize": "^4.41.2",
     "sqlite3": "^4.0.4"
