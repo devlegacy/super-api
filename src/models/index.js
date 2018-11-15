@@ -9,28 +9,28 @@ const RolePermission = sequelize.import(__dirname + "/RolePermission");
 // Relación de muchos a muchos entre usuarios y roles
 
 User.belongsToMany(Role, {
-    through: UserRole
+  through: UserRole
 });
 
 Role.belongsToMany(User, {
-    through: UserRole
+  through: UserRole
 });
 
 
 // Relación de muchos a muchos entre roles y permisos
 
 Role.belongsToMany(Permission, {
-    through: RolePermission
+  through: RolePermission
 });
 
 Permission.belongsToMany(Role, {
-    through: RolePermission
+  through: RolePermission
 });
 
 module.exports = {
-    User: User,
-    Role: Role,
-    UserRole: UserRole,
-    Permission: Permission,
-    RolePermission: RolePermission
+  User: User,
+  Role: Role,
+  UserRole: UserRole,
+  Permission: Permission,
+  RolePermission: RolePermission
 };
