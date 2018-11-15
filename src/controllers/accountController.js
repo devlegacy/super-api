@@ -16,7 +16,7 @@ const {
   API_ACCESS_TOKEN_SECRET,
   API_ACCESS_TOKEN_LIFE,
 } = process.env;
-console.log(APP_URL, MAILER_SENDER);
+
 const smtpTransport = nodemailer.createTransport({
   service: MAILER_SERVICE_PROVIDER || 'Gmail',
   auth: {
