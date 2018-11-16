@@ -5,10 +5,6 @@ import bcrypt from "bcrypt";
 function encryptPassword(password) {
   return bcrypt.hash(password, 10)
 }
-const {
-  APP_URL,
-} = process.env;
-console.log(APP_URL);
 
 module.exports = {
 

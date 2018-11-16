@@ -73,24 +73,24 @@ curl -d '{"username":"admin", "password":"password"}' -H "Content-Type: applicat
 
 ## Scafolding
 
-+&nbsp; :open_file_folder: `super-api`
++&nbsp; :open_file_folder: `super-api/`
 
-&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `database` - Archivos relacionados con la base de datos
+&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `database/` - Archivos relacionados con la base de datos
 
-&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `postman` - Archivos para importar a postman
+&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `postman/` - Archivos para importar a postman
 
-&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `screenshots` - Capturas del funcionamiento y uso del API
+&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `screenshots/` - Capturas del funcionamiento y uso del API
 
-&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `src` - Archivos fuentes
+&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `src/` - Archivos fuentes
 
-&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `controllers`
+&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `controllers/`
 
-&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `middlewares`
+&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `middlewares/`
 
-&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `models`
+&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `models/`
 
-&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `routes`
+&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `routes/`
 
-&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `validations`
+&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `validations/`
 
-&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `views`
+&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;+-- :open_file_folder: `views/`

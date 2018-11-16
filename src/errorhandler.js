@@ -5,7 +5,6 @@ function errorhandler(err, req, res, next) {
     let newErrorMessages = [];
     const re = /\"(.*?)\"/gm;
     const subst = '[$1]';
-    // if (err.errors.length > 0) {
     err.errors.map(errorItem => { // If is declaration is empty don't run the loop
       const { types, messages, field } = errorItem; // Destructuring assignment
       if (types.length > 0 && types.length === messages.length) {

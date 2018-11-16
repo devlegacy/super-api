@@ -3,7 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import errorhandler from './errorhandler';
 
-import routes from './routes/routes';
+import routes from './routes/';
 import { join } from "path";
 import exphbs from "express-handlebars"
 
@@ -23,7 +23,11 @@ app
     partialsDir: join(__dirname, './views/partials')
   }))
   .set('view engine', '.hbs')
-  .use(routes)
+  .use('/v1', routes())
+  .use('/', routes())
+  .get("/*", (req, res) => {
+    throw { message: 'PAGE NOT FOUND', statusCode: 404 };
+  })
   .use(errorhandler);
 
 /**
