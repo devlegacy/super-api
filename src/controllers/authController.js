@@ -1,7 +1,7 @@
 import mod from "../models";
 import bcrypt from "bcrypt";
-import config from "../config";
 import jwt from "jsonwebtoken";
+const { API_ACCESS_TOKEN_SECRET, API_ACCESS_TOKEN_LIFE } = process.env;
 
 module.exports = {
   login(req, res) {
@@ -21,9 +21,9 @@ module.exports = {
               const payLoad = {
                 "id": user.id
               };
-              const accessToken = jwt.sign(payLoad, config.accessTokenSecret,
+              const accessToken = jwt.sign(payLoad, API_ACCESS_TOKEN_SECRET,
                 {
-                  expiresIn: config.accessTokenLife
+                  expiresIn: API_ACCESS_TOKEN_LIFE
                 });
               const response = {
                 "access_token": accessToken,
