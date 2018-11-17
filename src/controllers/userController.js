@@ -1,7 +1,8 @@
 import models from "../models";
 import sequelize from "../db";
 import bcrypt from "bcrypt";
-
+import formidable from 'formidable';
+import { join } from 'path';
 function encryptPassword(password) {
   return bcrypt.hash(password, 10)
 }
@@ -243,36 +244,64 @@ module.exports = {
       res.status(500).send(error);
     })
   },
-
+  // TODO: REPAIR
   update(req, res) {
-    let userId = req.params.id;
-    let updateValues = {
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
-    };
-    encryptPassword(req.body.password).then((hashedPassword) => {
-      return hashedPassword;
-    }).then((hashedPassword) => {
-      updateValues.password = hashedPassword;
-      return models.User.update(updateValues, {
-        where: {
-          id: userId
-        },
-        returning: true,
-        plain: true
+    new formidable
+      .IncomingFrom()
+      .parse(req)
+      .on('field', (name, field) => {
+        console.log('Field', name, field)
       })
-    }).then(() => {
-      return models.User.findOne({
-        where: {
-          id: userId
-        }
+      .on('fileBegin', (name, file) => {
+        form.on('fileBegin', (name, file) => {
+          file.path = join(__dirname, './../storage/uploads/' + file.name);
+        });
+      })
+      .on('file', (name, file) => {
+        console.log('Uploaded file', name, file)
+      })
+      .on('aborted', () => {
+        console.error('Request aborted by the user')
+      })
+      .on('error', (err) => {
+        console.error('Error', err)
+        throw err
+      })
+      .on('end', () => {
+        res.status(200).send({ message: 'all ok' });
       });
-    }).then((updated) => {
-      res.status(200).send(updated);
-    }).catch((error) => {
-      res.status(500).send(error);
-    });
+    // form.parse(req, function (err, fields, files) {
+    //   // console.log({ fields: fields, files: files });
+    //   res.status(200).send({ message: 'all ok' });
+    // });
+    // let userId = req.params.id;
+    // let updateValues = {
+    //   username: req.body.username,
+    //   email: req.body.email,
+    //   password: req.body.password
+    // };
+    // encryptPassword(req.body.password).then((hashedPassword) => {
+    //   return hashedPassword;
+    // }).then((hashedPassword) => {
+    //   updateValues.password = hashedPassword;
+    //   return models.User.update(updateValues, {
+    //     where: {
+    //       id: userId
+    //     },
+    //     returning: true,
+    //     plain: true
+    //   })
+    // }).then(() => {
+    //   return models.User.findOne({
+    //     where: {
+    //       id: userId
+    //     }
+    //   });
+    // }).then((updated) => {
+    //   res.status(200).send(updated);
+    // }).catch((error) => {
+    //   res.status(500).send(error);
+    // });
   },
 
   del(req, res) {

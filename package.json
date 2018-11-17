@@ -7,7 +7,8 @@
     "build": "./node_modules/.bin/babel src --out-dir api && shx cp -r ./src/views ./api/views",
     "babel-node": "babel-node src/index.js",
     "dev": "nodemon --exec npm run babel-node",
-    "start": "node ./api/index.js"
+    "start": "node ./api/index.js",
+    "sequelize": "sequelize"
   },
   "author": "",
   "license": "ISC",
@@ -19,11 +20,13 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "express-validation": "^1.0.2",
+    "formidable": "^1.2.1",
     "handlebars": "^4.0.12",
     "joi": "^14.0.6",
     "jsonwebtoken": "^8.4.0",
     "nodemailer": "^4.6.8",
     "sequelize": "^4.41.2",
+    "sequelize-cli": "^5.3.0",
     "sqlite3": "^4.0.4"
   },
   "devDependencies": {

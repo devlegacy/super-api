@@ -21,9 +21,10 @@ module.exports = {
               const payLoad = {
                 "id": user.id
               };
+
               const accessToken = jwt.sign(payLoad, API_ACCESS_TOKEN_SECRET,
                 {
-                  expiresIn: API_ACCESS_TOKEN_LIFE
+                  expiresIn: parseInt(API_ACCESS_TOKEN_LIFE)
                 });
               const response = {
                 "access_token": accessToken,

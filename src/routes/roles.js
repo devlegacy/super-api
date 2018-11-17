@@ -1,5 +1,5 @@
 import express from 'express';
-import con from '../controllers';
+import role from '../controllers/roleController'
 import mw from '../middlewares';
 import mod from "../models";
 import val from '../validations';
@@ -14,38 +14,38 @@ router
     mw.verifyAccessToken,
     validate(val.role.create),
     mw.hasPermission(["create-roles"]),
-    con.role.create)
+    role.create)
   .get('/roles/:id',
     mw.checkResourceExists(mod.Role),
     mw.verifyAccessToken,
     mw.hasPermission(["read-roles"]),
-    con.role.read)
+    role.read)
   .get('/roles',
     mw.verifyAccessToken,
     mw.hasPermission(["list-roles"]),
-    con.role.list)
+    role.list)
   .put('/roles/:id/',
     mw.checkResourceExists(mod.Role),
     mw.verifyAccessToken,
     mw.hasPermission(["update-roles"]),
     validate(val.role.update),
-    con.role.update)
+    role.update)
   .delete('/roles/:id/',
     mw.checkResourceExists(mod.Role),
     mw.verifyAccessToken,
     mw.hasPermission(["delete-roles"]),
-    con.role.remove)
+    role.remove)
   .put('/roles/:id/add_permissions',
     mw.checkResourceExists(mod.Role),
     mw.verifyAccessToken,
     mw.hasPermission(["assign-permissions-to-role"]),
     validate(val.role.addOrRemovePermission),
-    con.role.addPermission)
+    role.addPermission)
   .delete('/roles/:id/remove_permissions',
     mw.checkResourceExists(mod.Role),
     mw.verifyAccessToken,
     mw.hasPermission(["remove-permissions-from-role"]),
     validate(val.role.addOrRemovePermission),
-    con.role.deletePermission);
+    role.deletePermission);
 
 module.exports = router;

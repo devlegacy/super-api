@@ -62,7 +62,7 @@ module.exports = {
           "id": user.id
         };
         const emailToken = jwt.sign(payLoad, API_ACCESS_TOKEN_SECRET, {
-          expiresIn: API_ACCESS_TOKEN_LIFE
+          expiresIn: parseInt(API_ACCESS_TOKEN_LIFE)
         });
 
 
@@ -203,7 +203,7 @@ module.exports = {
         "id": user.id
       };
       const token = jwt.sign(payLoad, API_ACCESS_TOKEN_SECRET, {
-        expiresIn: API_ACCESS_TOKEN_LIFE
+        expiresIn: parseInt(API_ACCESS_TOKEN_LIFE)
       });
 
       //?token=

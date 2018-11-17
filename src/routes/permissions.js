@@ -1,5 +1,5 @@
 import express from 'express';
-import con from '../controllers';
+import permission from '../controllers/permissionController';
 import mw from '../middlewares';
 import mod from "../models";
 import val from '../validations';
@@ -14,26 +14,26 @@ router
     mw.verifyAccessToken,
     mw.hasPermission(["create-permissions"]),
     validate(val.permission.create),
-    con.permission.create)
+    permission.create)
   .get('/permissions/:id',
     mw.checkResourceExists(mod.Permission),
     mw.verifyAccessToken,
     mw.hasPermission(["read-permissions"]),
-    con.permission.read)
+    permission.read)
   .get('/permissions',
     mw.verifyAccessToken,
     mw.hasPermission(["list-permissions"]),
-    con.permission.list)
+    permission.list)
   .put('/permissions/:id/',
     mw.checkResourceExists(mod.Permission),
     mw.verifyAccessToken,
     mw.hasPermission(["update-permissions"]),
     validate(val.permission.update),
-    con.permission.update)
+    permission.update)
   .delete('/permissions/:id/',
     mw.checkResourceExists(mod.Permission),
     mw.verifyAccessToken,
     mw.hasPermission(["delete-permissions"]),
-    con.permission.remove);
+    permission.remove);
 
 module.exports = router;

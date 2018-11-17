@@ -14,6 +14,7 @@ const { APP_PORT } = process.env;
  * Configure app
  */
 app
+  .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .set('views', join(__dirname, './views'))
   .engine('.hbs', exphbs({
@@ -23,9 +24,8 @@ app
     partialsDir: join(__dirname, './views/partials')
   }))
   .set('view engine', '.hbs')
-  .use('/v1', routes())
-  .use('/', routes())
-  .get("/*", (req, res) => {
+  .use(routes())
+  .get('/*', (req, res) => {
     throw { message: 'PAGE NOT FOUND', statusCode: 404 };
   })
   .use(errorhandler);
